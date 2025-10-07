@@ -1,37 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEPSE Stock Tracker</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEPSE Tracker</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>📈 NEPSE Stock Tracker</h1>
-    <p>Track your favorite shares and target prices.</p>
+    <div class="container">
+        <h1>NEPSE Share Tracker</h1>
 
-    <div class="form">
-      <input type="text" id="stockName" placeholder="Stock name (e.g. NTC)">
-      <input type="number" id="currentPrice" placeholder="Current price">
-      <input type="number" id="targetPrice" placeholder="Target price">
-      <button id="addBtn">Add Stock</button>
+        <div class="stock-form">
+            <input type="text" id="stockName" placeholder="Stock Name">
+            <input type="number" id="quantity" placeholder="Quantity">
+            <input type="number" id="targetPrice" placeholder="Target Price">
+            <input type="number" id="ltp" placeholder="LTP">
+            <input type="number" id="wacc" placeholder="WACC Price">
+            <button onclick="addStock()">Add Stock</button>
+        </div>
+
+        <div class="sort-buttons" style="text-align:center; margin-bottom:10px;">
+            <button onclick="sortStocks('name')">Sort by Name</button>
+            <button onclick="sortStocks('profitLoss')">Sort by Profit/Loss</button>
+        </div>
+
+        <table id="stockTable">
+            <thead>
+                <tr>
+                    <th>Stock</th>
+                    <th>Quantity</th>
+                    <th>Target Price</th>
+                    <th>WACC</th>
+                    <th>LTP</th>
+                    <th>Amount</th>
+                    <th>Profit/Loss</th>
+                    <th>Profit/Loss %</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="stockList"></tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5"><strong>Current Value</strong></td>
+                    <td id="currentValue">0</td>
+                    <td id="totalPL">0</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="5"><strong>Current Investment</strong></td>
+                    <td id="currentInvestment">0</td>
+                    <td id="totalProfitLoss">0</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Stock</th>
-          <th>Current Price</th>
-          <th>Target Price</th>
-          <th>Status</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody id="stockTable"></tbody>
-    </table>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
